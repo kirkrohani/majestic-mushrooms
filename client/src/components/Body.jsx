@@ -8,6 +8,7 @@ import axios from 'axios';
 
 class Body extends React.Component {
   constructor(props) {
+    console.log('Inside Body.jsx constructor: ', props.location);
     super(props);
     this.state = { 
       messages: [],
@@ -28,11 +29,11 @@ class Body extends React.Component {
           snippet: message.snippet,
           unread: message.unread,
           message_id: message.id
-        }
+        };
       });
       app.setState({
         messages: retrievedMessages
-      })
+      });
     });
   }
 
