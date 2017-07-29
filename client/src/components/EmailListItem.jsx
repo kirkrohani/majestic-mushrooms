@@ -19,11 +19,11 @@ class EmailListItem extends React.Component {
 
   deleteMessage(e, messageId) {
     e.stopPropagation();
-
+    console.log('Inside delete Message: ', e, messageId);
     //@TODO: replace number string with real trash folder id, from state + add type
-    axios.put(`/api/messages/${messageId}/trash/'3948384545'`).then(response => { 
-      console.log('message deleted!', response);
-    });
+    // axios.put(`/api/messages/${messageId}/trash/'3948384545'`).then(response => { 
+    //   console.log('message deleted!', response);
+    // });
   }
 
   render() {
