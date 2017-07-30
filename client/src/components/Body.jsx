@@ -1,7 +1,7 @@
 import React from 'react';
 import { Divider} from 'semantic-ui-react';
 import axios from 'axios';
-
+import { Link, Redirect } from 'react-router-dom';
 import EmailListContainer from '../containers/EmailListContainer.jsx';
 import SearchContainer from '../containers/SearchContainer.jsx';
 import { parseMessage } from './utils/messagesHelper';
@@ -15,6 +15,8 @@ class Body extends React.Component {
   }
 
   render() {
+    const { view } = this.props;
+    console.log('Inside Body.jsx rende with view: ', view);
     return (
       <div>
         <Divider hidden />
@@ -32,10 +34,19 @@ class Body extends React.Component {
           <Divider hidden />
         </div>
         }
-        <EmailListContainer style={{border: '0'}}/>
+        { view === 'Read' && (
+          <Redirect from={'/'} push to={'/message'}/>
+        )}
+
+        { view === 'Inbox' && (
+           <EmailListContainer style={{border: '0'}}/>
+        )}
+        
+       
       </div>
     );
   }
 }
 
 export default Body;
+

@@ -14,19 +14,24 @@ class EmailListItem extends React.Component {
 
 
   handleMessageClick(messageId, messageIndex, messageUnread) {
+    console.log('User CLICKED A MESSAGE');
     queryMessageDetails(messageId, messageIndex, messageUnread, this.props.setCurrentMessage);
   }
 
   deleteMessage(e, messageId) {
     e.stopPropagation();
-    console.log('Inside delete Message: ', e, messageId);
     //@TODO: replace number string with real trash folder id, from state + add type
     // axios.put(`/api/messages/${messageId}/trash/'3948384545'`).then(response => { 
     //   console.log('message deleted!', response);
     // });
   }
 
+  handleReplyClick(e, messageId) {
+    console.log('User clicked on reply: ', messageId, e);
+  }
+
   render() {
+
     const {view, messageIndex } = this.props;
     const messages = (view === 'Search') ? this.props.searchResults : this.props.messages;
 
@@ -41,7 +46,8 @@ class EmailListItem extends React.Component {
           onMouseEnter={() => { this.setState({ showButton: true }); }}
           onMouseLeave={() => { this.setState({ showButton: false }); }}>
 
-          <Table.Cell width="4">
+          <Table.Cell width="4"
+            onClick={ () => {this.handleMessageClick(message.message_id, messageIndex, message.unread);} }>
             <Label circular style={{marginRight:'8px', background:message.color, color:'white'}}>
               { fromStr.charAt(0).toUpperCase() }
             </Label>
@@ -50,7 +56,8 @@ class EmailListItem extends React.Component {
             </span>
           </Table.Cell>
 
-          <Table.Cell>
+          <Table.Cell
+            onClick={ () => {this.handleMessageClick(message.message_id, messageIndex, message.unread);} } >
             <span style={{fontWeight: weight}}>{message.subject}</span>
           </Table.Cell>
 
@@ -58,8 +65,8 @@ class EmailListItem extends React.Component {
             {this.state.showButton === true ? 
             ( 
               <div>
-                <Icon name="reply" onClick={ (e) => { onClick(e, message.message_id); }}/>
-                <Icon name="trash outline" onClick={ (e) => { this.deleteMessage(e, message.message_id); }}/>
+                <Icon name="reply" onClick={ (e) => { this.handleReplyClick(e, message.message_id); }}/>
+                {/* <Icon name="trash outline" onClick={ (e) => { this.deleteMessage(e, message.message_id); }}/> */}
               </div>
             ) : (
               <span>{message.timestamp}</span>
