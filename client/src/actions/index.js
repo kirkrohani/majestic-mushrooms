@@ -122,6 +122,11 @@ export const setView = (viewName = 'Inbox') => {
       type:       'SET_VIEW_TO_WAITING',
       view:       viewName
     };
+  case 'Reply':
+    return {
+      type:       'SET_VIEW_TO_REPLY',
+      view:       viewName
+    };
 
   default:
     return {
@@ -131,7 +136,7 @@ export const setView = (viewName = 'Inbox') => {
   }
 };
 
-export const setCurrentMessage = (currentMessage, messageIndex) => {
+export const setMessageToRead = (currentMessage, messageIndex) => {
   return {
     type:         'SET_CURRENT_MESSAGE',
     message:      currentMessage,

@@ -4,6 +4,7 @@ import BodyContainer from '../../containers/BodyContainer.jsx';
 import ComposeEmailContainer from '../../containers/ComposeEmailContainer.jsx';
 import ReadEmailContainer from '../../containers/ReadEmailContainer.jsx';
 import EmailListContainer from '../../containers/EmailListContainer.jsx';
+import ReplyContainer from '../../containers/ReplyContainer.jsx';
 import { withRouter } from 'react-router';
 
 //Associate each route URL path with a component
@@ -20,9 +21,9 @@ const routes = [
     exact:         true,
     component:     ReadEmailContainer
   },
-  { path:          '/email',
+  { path:          '/reply',
     exact:         true,
-    component:     EmailListContainer
+    component:     ReplyContainer
   }
 ];
 

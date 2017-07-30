@@ -21,7 +21,8 @@ export const viewReducer = (state = 'Inbox', action) => {
     return action.view;
   case 'SET_VIEW_TO_WAITING':
     return action.view;
-    
+  case 'SET_VIEW_TO_REPLY':
+    return action.view;
     
   default:
     return 'Inbox';

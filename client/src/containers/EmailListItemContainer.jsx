@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { setView, setCurrentMessage } from '../actions';
+import { setView, setMessageToRead } from '../actions';
 import EmailListItem from '../components/EmailListItem.jsx';
 
 const mapStateToProps = (state) => {
@@ -12,8 +12,11 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    setCurrentMessage: (newMessage, messageIndex) => {
-      dispatch(setCurrentMessage(newMessage, messageIndex));
+    setMessageToRead: (newMessage, messageIndex) => {
+      dispatch(setMessageToRead(newMessage, messageIndex));
+    },
+    setNewView:         (view) => {
+      dispatch(setView(view));
     }
   };
 };

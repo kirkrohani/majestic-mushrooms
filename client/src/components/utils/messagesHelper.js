@@ -20,7 +20,7 @@ export const parseMessage = (messages, today) => {
   });
 };
 
-export const queryMessageDetails = (messageId, messageIndex, messageUnread, setCurrentMessage) => {
+export const queryMessageDetailsToRead = (messageId, messageIndex, messageUnread, setMessageToRead) => {
   const readMessage = [
     () => { return axios.get(`/api/messages/read/${messageId}`); },
     () => {  if (messageUnread === true) { return axios.put(`/api/messages/${messageId}/read/null`); } }
@@ -28,7 +28,7 @@ export const queryMessageDetails = (messageId, messageIndex, messageUnread, setC
 
   axios.all(readMessage.map(axiosCall => axiosCall()))
   .then(axios.spread((res1, res2) => {
-    setCurrentMessage(res1.data, messageIndex);
+    setMessageToRead(res1.data, messageIndex);
   }))
   .catch(err => {
     console.log('ERROR getting messages: ', err);

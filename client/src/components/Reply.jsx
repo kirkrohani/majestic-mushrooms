@@ -34,6 +34,7 @@ class Reply extends React.Component {
   }
 
   render() {
+    console.log('Inside Reply.jsx with props: ', this.props);
     const { message } = this.props;
 
     return (

@@ -2,7 +2,7 @@ import React from 'react';
 import { Icon, Table, Segment, Label } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import { queryMessageDetails } from './utils/messagesHelper.js';
+import { queryMessageDetailsToRead } from './utils/messagesHelper.js';
 
 class EmailListItem extends React.Component {
   constructor(props) {
@@ -14,8 +14,7 @@ class EmailListItem extends React.Component {
 
 
   handleMessageClick(messageId, messageIndex, messageUnread) {
-    console.log('User CLICKED A MESSAGE');
-    queryMessageDetails(messageId, messageIndex, messageUnread, this.props.setCurrentMessage);
+    queryMessageDetailsToRead(messageId, messageIndex, messageUnread, this.props.setMessageToRead);
   }
 
   deleteMessage(e, messageId) {
@@ -28,6 +27,7 @@ class EmailListItem extends React.Component {
 
   handleReplyClick(e, messageId) {
     console.log('User clicked on reply: ', messageId, e);
+    this.props.setNewView('Reply');
   }
 
   render() {
