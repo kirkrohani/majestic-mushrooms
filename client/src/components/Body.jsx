@@ -34,10 +34,13 @@ class Body extends React.Component {
           <Divider hidden />
         </div>
         }
-        { (view === 'Read' ||  view === 'Reply') && (
+        { view === 'Read' && (
           <Redirect from={'/'} push to={'/message'}/>
         )}
-
+        
+        { view === 'Reply' && (
+          <Redirect from={'/'} push to={'/compose'}/>
+        )}
 
         { view === 'Inbox' && (
            <EmailListContainer style={{border: '0'}}/>
