@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import ReadEmail from '../components/ReadEmail.jsx';
+import ReadEmail from '../components/ReadEmail/ReadEmail.jsx';
 import { setCurrentThread, setCurrentMessage } from '../actions';
 
 const mapStateToProps = (state) => {
@@ -16,7 +16,7 @@ const mapDispatchToProps = (dispatch) => {
     setThread: (newThread) => {
       dispatch(setCurrentThread(newThread));
     },
-    setCurrentMessage: (currentMessage, messageIndex) => {
+    setMessageToRead: (currentMessage, messageIndex) => {
       dispatch(setCurrentMessage(currentMessage, messageIndex));
     }
   };

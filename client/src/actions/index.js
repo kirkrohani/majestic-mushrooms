@@ -136,7 +136,7 @@ export const setView = (viewName = 'Inbox') => {
   }
 };
 
-export const setMessageToRead = (currentMessage, messageIndex) => {
+export const setCurrentMessage = (currentMessage, messageIndex) => {
   return {
     type:         'SET_CURRENT_MESSAGE',
     message:      currentMessage,
